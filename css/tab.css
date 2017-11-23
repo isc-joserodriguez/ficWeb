@@ -41,6 +41,9 @@ div.tab button.active {
 .textArea {
     resize: none;
 }
+#modalaut .modal-dialog  {width:90%;}
+#modalGra .modal-dialog  {width:90%;}
+#modalInfo .modal-dialog  {width:80%;}
 #codeArea1 {
      height: 325px;
      width: 654px;

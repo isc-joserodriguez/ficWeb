@@ -34,7 +34,8 @@
             </button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"><span
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
+                    onclick="$('#modalInfo').show('modal')"><span
                     class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info
             </button>
         </div>
@@ -59,8 +60,12 @@
                     </button>
                 </div>
             </div>
-            <div id="Asig" class="tabcontentAsiCon"><pre id="codeArea1"></pre></div>
-            <div id="Cons" class="tabcontentAsiCon"><pre id="codeArea2"></pre></div>
+            <div id="Asig" class="tabcontentAsiCon">
+                <pre id="codeArea1"></pre>
+            </div>
+            <div id="Cons" class="tabcontentAsiCon">
+                <pre id="codeArea2"></pre>
+            </div>
         </div>
         <div class="col-lg-5">
             <div class="tab">
@@ -90,12 +95,15 @@
         <div class="col-lg-5">
             <div class="tab">
                 <div class="col-sm-6">
-                    <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Auto')" id="defaultAut">
+                    <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Auto')"
+                            ondblclick=" $('#modalaut').show('modal');" id="defaultAut">
                         Automata
                     </button>
                 </div>
                 <div class="col-sm-6">
-                    <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Gram')">Gramatica</button>
+                    <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Gram')"
+                            ondblclick="$('#modalGra').show('modal');">Gramatica
+                    </button>
                 </div>
             </div>
             <div id="Auto" class="tabcontentAutGra"><textarea class="textArea" name="outPut" id="automataOut" cols="62"
@@ -105,7 +113,74 @@
         </div>
     </div>
 </div>
+<div id="modalaut" name="modalaut" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" onclick="$('#modalaut').hide('modal');" aria-hidden="true">&times;</button>
+                <h3>Automata</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <img src="resources/automata.jpg" height=500 width="800">
+                    <textarea class="textArea" id="modalAutOut" cols="50"
+                              rows="12" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalGra" name="modalGra" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" onclick="$('#modalGra').hide('modal');" aria-hidden="true">&times;</button>
+                <h3>Gramatica</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <img src="resources/automata.jpg" height=500 width="800">
+                    <textarea class="textArea" id="modalGraOut" cols="50"
+                              rows="12" readonly></textarea>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalInfo" name="modalInfo" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" onclick="$('#modalInfo').hide('modal');" aria-hidden="true">&times;</button>
+                <h3>Información</h3>
+                <img align="right" src="resources/Logo.png">
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div align="center"><h1>ITT</h1></div>
+                    <p> Compilador FIC creado por:
+                    <ul>
+                        <li>
+                            Samaniego Navarro DAvid Eduardo
+                        </li>
+                    <li>
+                        Shepe
+                    </li>
+                    <li>
+                        Julio
+                    </li>
+                    </ul>
+                    </p>
+                    <p>
+                        Docente: Francisco Ibarra Carlos
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/tab.js"></script>
 </body>
 </html>
