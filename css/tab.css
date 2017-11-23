@@ -41,3 +41,21 @@ div.tab button.active {
 .textArea {
     resize: none;
 }
+#codeArea1 {
+     height: 325px;
+     width: 654px;
+     position: relative;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;
+ }
+#codeArea2 {
+    height: 325px;
+    width: 654px;
+    position: relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

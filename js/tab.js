@@ -42,3 +42,12 @@ function openAutGra(evt, editor) {
 document.getElementById("defaultAsi").click();
 document.getElementById("defaultTok").click();
 document.getElementById("defaultAut").click();
+//editor
+//areaCode1 Asignaciones
+var editor = ace.edit("codeArea1");
+editor.setTheme("ace/theme/twilight");
+editor.session.setMode("ace/mode/javascript");
+//areaCode2 Consultas
+var editor2 = ace.edit("codeArea2");
+editor2.setTheme("ace/theme/twilight");
+editor2.session.setMode("ace/mode/javascript");
