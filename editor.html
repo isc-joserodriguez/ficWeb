@@ -10,36 +10,36 @@
     }
 
     #editor {
-        margin: 0;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
+      width: 500px;
+      height: 400px;
+      margin: 0;
+      position: relative;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
     }
   </style>
-  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
   <div>
     <pre id="editor">
-            asdasda
-    asfasdf
-    asdf
-    asd
-    fas
-    df+
-    sda
-    s+dasd
-    sag
-    asdg
-    ++
-    {dsagsñgknasbgfahfñADK
-     
-     D
-     
-     puto
+grupo ( nombre , 30 , carreras );
+maestro ( nombre , 1 , 23 , 1 );
+aula ( Nombre , 32 );
+recurso ( nombre , 1 , si );
+materia ( nombre , carrera );
+asignarRecurso ( nombre , materia );
+asignarGrupo ( nombreGrupo , nombreMateria );
+asignarAula ( nombreAula , nombreGrupo );
+asignarMaestro ( nombreMaestro , nombreGrupo );
+asignarHora ( nombreGrupo , 12 );
     </pre>
+  </div>
+  <div>
+    <button class="compilar">
+      Compilar
+    </button>
   </div>
     
 
@@ -47,15 +47,9 @@
 
 
 
-<script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
-<script>
-    var editor = ace.edit("editor");
-    editor.setTheme("ace/theme/twilight");
-    editor.session.setMode("ace/mode/javascript");
-    
-    console.log(editor.getValue())
-
-</script>
+<script src="js/editor/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/inicializar.js"></script>
+<script src="js/analizadores/automata.js"></script>
 
 
 </body>
