@@ -44,6 +44,7 @@ document.getElementById("defaultAsi").click();
 document.getElementById("defaultTok").click();
 document.getElementById("defaultAut").click();
 //editor
+
 //areaCode1 Asignaciones
 var editor = ace.edit("codeArea1");
 editor.setTheme("ace/theme/twilight");
