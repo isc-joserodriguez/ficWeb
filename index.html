@@ -61,7 +61,40 @@
                 </div>
             </div>
             <div id="Asig" class="tabcontentAsiCon">
-                <pre id="codeArea1"></pre>
+                <pre id="codeArea1">
+********DECLARACIÓN***********
+Edificio('IDEdificio','UVP');
+Grupo('IDGrupo','B',30,'ISC');
+Maestro('IDMaestro','FIC',3,10,13);
+Aula('ID','2',12,40);
+Recurso(IDRecurso,SerieRecurso,'Cañón');
+Materia(IDMateria,'LYAII','ISC',5);
+Hora('IDHora','L-M-X-J-V','12-13');
+
+
+********ASIGNACIÓN************
+AsignarRecurso('IDRecurso','IDMateria');
+AsignarGrupo('IDGrupo','IDMateria',);
+AsignarEdificio('IDEdificio','IDAula');
+AsignarAula('IDAula',IDGrupo);
+AsignarMaestro('IDMaestro','IDGrupo');
+AsignarHora('IDHora','IDGrupo');
+
+*******Consultas**************
+
+//Consultar las aulas que están disponibles para tal materia
+//Consultar las aulas que están disponibles para tal materia en tal hora
+
+
+ConsultaAula(materia:‘IDMateria’) //trae la aulas que cumplen los requisitos del grupo
+ConsultaAula(materia:‘IDMateria’, hora: ‘IDHora|12:00’)// //trae la aulas que cumplen los requisitos del grupo en una hora determinada
+
+ConsultaMaestro(hora:’IDHora’); //
+ConsultaMaestro();
+—-------Maestros----------------
+—-------Maestros----------------
+—-------Maestros----------------
+                </pre>
             </div>
             <div id="Cons" class="tabcontentAsiCon">
                 <pre id="codeArea2"></pre>
