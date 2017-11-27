@@ -19,8 +19,10 @@
             </button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile"><span
-                    class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile"
+                    class="glyphicon glyphicon-indent-right" aria-hidden="true"
+                    onclick="validarGramatica()"> Compile
+
             </button>
         </div>
         <div class="col-lg-2">
@@ -82,8 +84,23 @@
             </div>
             <div id="Toke" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tokensOut" cols="62"
                                                               rows="16" readonly></textarea></div>
-            <div id="Tabl" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tablaSimbOut" cols="62"
-                                                              rows="16" readonly></textarea></div>
+            <div id="Tabl" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaSimbOut" cols="62"
+                                                              rows="16" readonly>
+            <table class="table divN" >
+                <thead text-align="center"> 
+                    <tr>
+                        <th>Num</th>
+                        <th>Token</th>
+                        <th>Tipo</th>
+                        <th>Fila</th>
+                        <th>Columna</th>
+                    </tr> 
+                </thead>
+                <tbody id="tablaS" > 
+                   
+                </tbody>
+                </table>                                                  
+                                                              </div></div>
         </div>
     </div>
 
@@ -182,5 +199,6 @@
 <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/tab.js"></script>
+<script src="js/gramatica.js"></script>
 </body>
 </html>
