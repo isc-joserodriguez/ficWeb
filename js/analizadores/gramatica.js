@@ -6,14 +6,12 @@
 
 function validarGramatica(){
     var exp = editor.getValue();
-    console.log(editor.getValue());
     var txtGramatica = $('#gramaticaOut');
     var txtErrores = $('#outPut');
     var tokenArea = $("#tokensOut");
     $('#gramaticaOut').val("");
-    $('#outPut').val("");
     $('#tokensOut').val("");
-    $("#tablaS tr").remove(); 
+    $("#tablaS tr").remove();
 
     analizaLxl(txtGramatica,txtErrores, tokenArea, exp);
 
@@ -24,7 +22,7 @@ function analizaLxl(txtGramatica,txtErrores, tokenArea, exp){
         nErrores=0;
         var lin=exp.split("\n");  
         cToken=1;     
-        var i;                
+        var i;
         for(i=0;i<lin.length;i++){
             if(lin[i]!=""&&lin[i]!=" "){
              validar(lin[i],txtGramatica,txtErrores,tokenArea,i+1);
@@ -33,10 +31,10 @@ function analizaLxl(txtGramatica,txtErrores, tokenArea, exp){
 
          if(nErrores!=0){
              var errores = $('#outPut').val();
-             $('#outPut').val(errores+"\n\nEl código se ejecutó con errores");
+             $('#outPut').val(errores+"\n\nEl código se ejecutó con errores.");
          }else{
              var errores = $('#outPut').val();
-            $('#outPut').val(errores+"\n\nEl código se ejecutó sin errores");
+            $('#outPut').val(errores+"\n\nEl código se ejecutó sin errores.");
          }
 }
 
@@ -47,33 +45,38 @@ function validar(lin, txtGramatica, txtErrores, tokenArea, nLin) {
             nErrores++;
             return;
         }
+        if(/Alumno /.test(lin)){
+            lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreAlumno ,");
+        }else if(/Maestro /.test(lin)){
+            lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreMaestro ,");
+        }
+
         var token = lin.replace(";", " ;").split(" ");
         
         if(!validarGramaticas(token,txtGramatica,txtErrores,tokenArea, token.length,nLin,lin)){
             nErrores++;
         }
  }
-
 function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, lin) {
     columna = 0;
     tipo = token[0].length;
     var gramatica = $('#gramaticaOut').val();
-    $('#gramaticaOut').val(""+gramatica+"1.- Se evalúa el token "+token[0]); 
+    $('#gramaticaOut').val(""+gramatica+"1.- Se evalúa el token "+token[0]);
             switch(token[0]){
                 case "Edificio":
                     var tokens = $('#tokensOut').val();
                     $('#tokensOut').val(""+tokens+"\n"+cToken+".- "+token[0]);
                     $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
-                    if(validarEdificio(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){   
+                    if(validarEdificio(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
                     return false;
-                    } 
+                    }
                 case "Grupo":
                     var tokens = $('#tokensOut').val();
                     $('#tokensOut').val(""+tokens+"\n"+cToken+".- "+token[0]);
                     $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
-                    if(validarGrupo(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){    
+                    if(validarGrupo(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
                     return false;}
@@ -88,7 +91,7 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                 case "Aula":
                     var tokens = $('#tokensOut').val();
                     $('#tokensOut').val(""+tokens+"\n"+cToken+".- "+token[0]);
-                    $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')                 
+                    $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
                     if(validarAula(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
@@ -97,7 +100,7 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                     var tokens = $('#tokensOut').val();
                     $('#tokensOut').val(""+tokens+"\n"+cToken+".- "+token[0]);
                     $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
-                    
+
                     if(validarMateria(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
@@ -106,7 +109,7 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                     var tokens = $('#tokensOut').val();
                     $('#tokensOut').val(""+tokens+"\n"+cToken+".- "+token[0]);
                     $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token[0]+'</td><td>palabra reservada</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
-                    
+
                     if(validarRecurso(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
@@ -126,12 +129,12 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                     if(validarAlumno(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
-                    return false;}   
+                    return false;}
                 case "AsignarAlumno":
                     if(validarAsignacion(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
-                    return false;}     
+                    return false;}
                 case "AsignarRecurso":
                     if(validarAsignacion(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
@@ -161,12 +164,12 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                     if(validarAsignacion(token, txtGramatica,txtErrores,tokenArea,tam, nLin, lin)){
                     return true;
                     }else{
-                    return false;}   
-                
+                    return false;}
+
             }
-    errores = $('#outPut').val();    
-     
-    $('#outPut').val(errores+"\nError: Se esperaba un tipo de dato en la linea "+nLin+"columna "+columna); 
+    errores = $('#outPut').val();
+
+    $('#outPut').val(errores+"\nError: Se esperaba un tipo de dato en la linea "+nLin+"columna "+columna);
     nErrores++;
     return false;
     }

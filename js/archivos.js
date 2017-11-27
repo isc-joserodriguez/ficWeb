@@ -36,12 +36,3 @@ function guardarArchivo () {
     var blob = new Blob([codigoFuente], {type: "text/plain;charset=UTF-8"});
     saveAs(blob, "prueba.fic");
 }
-
-function generadorCodigo() {
-
-    //lo que genera el codigo va aqui
-
-    var codigoGenerado="Aqui va el codigo generado";
-    var blob = new Blob([codigoGenerado], {type: "text/plain;charset=UTF-8"});
-    saveAs(blob, "mongoCode.txt");
-}

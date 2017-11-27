@@ -1,29 +1,24 @@
-var nErrores=0, cToken=1;
-$('#compile').on("click",function(){
-
-    console.log(editor.getValue());
-
+var nErrores=0;
+function ComenzarAutomata(){
     var automataArea= $('#automataOut');
     var errorArea=$('#outPut');
     analizarLineasAut(automataArea,errorArea,editor.getValue());
-});
-
+};
 function analizarLineasAut(txtAutomata,txtErrores,exp) {
     var lin=exp.split("\n");
-    //txtAutomata.val("");
-    //txtErrores.val("");
-    
-    cToken=1;
+    txtAutomata.val("");
+    txtErrores.val("");
     nErrores=0;
     for(var i=0;i<lin.length;i++){
         if(lin[i]!=""&&lin[i]!=" ")
         validarAutLin(lin[i],txtAutomata,txtErrores,i+1);
     }
+    /*
     if(nErrores!=0){
-        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó con errores");
+        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó con errores léxicos.");
     }else{
-        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó sin errores");
-    }
+        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó sin errores léxicos.");
+    }*/
 }
 
 function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
@@ -32,6 +27,12 @@ function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
         nErrores++;
         return;
     }
+    if(/Alumno /.test(lin)){
+        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreAlumno ,");
+    }else if(/Maestro /.test(lin)){
+        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreMaestro ,");
+    }
+
     var token=lin.replace(";", " ;").split(" ");
 
     if(!validarAutomata(token,txtAutomata,txtErrores, token.length,nLin)){
@@ -157,9 +158,10 @@ function  validarAutomata(token, txtAutomata, txtErrores,  tam, nLin) {
                 break;
             case 39:
                 return false;
+            case 1000:
+                return true;
         }
         txtAutomata.val(txtAutomata.val()+"\n\n");
-        cToken++;
         con++;
     }
     return estado==12;
@@ -172,7 +174,7 @@ function validarQ1(txtAutomata, txtErrores,  token, nLin) {
         case "Materia":
         case "Aula":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q24");
-            return 24;
+            return 1000;
         case "Hora":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q18");
             return 18;
@@ -367,7 +369,6 @@ function validarQ17(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
     
     var exp=/^\d$|^\d\d$|^\d\d\d$/
-    console.log(exp.test(token));
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q4");
         return 4;

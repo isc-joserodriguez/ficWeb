@@ -1,0 +1,4 @@
+function analizadores(){
+    ComenzarAutomata();
+    validarGramatica();
+}

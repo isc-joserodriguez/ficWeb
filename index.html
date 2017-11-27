@@ -13,15 +13,13 @@
     <div class="container-fluid">
         <div class="col-lg-2"><img src="resources/Logo.png" width="120px" height="50px"></div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="run"><span class="glyphicon glyphicon-play"
-                                                                                        aria-hidden="true"></span> Run
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="run" onclick="generarCodigo();">
+                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
             </button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile"
-                    class="glyphicon glyphicon-indent-right" aria-hidden="true"
-                    onclick="validarGramatica()"> <span
-                    class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>Compile 
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile" onclick="analizadores();">
+                <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
 
             </button>
         </div>
@@ -179,7 +177,7 @@ ConsultaMaestro();</pre>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <img src="resources/gramatica.png" height=400 width="800">
+                    <img src="resources/gramaticaheight=400 width="800">
                     <textarea class="textArea" id="modalGraOut" cols="40"
                               rows="10" readonly></textarea>
                 </div>
@@ -226,5 +224,10 @@ ConsultaMaestro();</pre>
 <script src="js/analizadores/gramatica.js"></script>
 <script src="js/FileSaver.min.js"></script>
 <script src="js/archivos.js"></script>
+<script src="js/manejador.js"></script>
+<script src="js/mongo/generadorMongo.js"></script>
+
 </body>
 </html>
+
+<!--prueba-->

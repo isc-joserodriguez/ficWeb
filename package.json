@@ -1,0 +1,27 @@
+{
+  "name": "fic",
+  "version": "1.0.0",
+  "description": "Lenguaje de programación para crear horarios.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joanrodriguezhe/ficWeb.git"
+  },
+  "keywords": [
+    "Compilador",
+    "FIC",
+    "JSON"
+  ],
+  "author": "José Rodriguez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joanrodriguezhe/ficWeb/issues"
+  },
+  "homepage": "https://github.com/joanrodriguezhe/ficWeb#readme",
+  "dependencies": {
+    "mongodb": "^2.2.33"
+  }
+}
