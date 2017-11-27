@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<headhead>
+<head>
     <title>Fic-Web</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/tab.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-</headhead>
+</head>
 <body>
 <nav class="navbar navbar-fixed-top">
     <div class="container-fluid">
@@ -24,7 +23,7 @@
             </button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="save"><span
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="save" onclick="guardarArchivo()"><span
                     class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
             </button>
         </div>
@@ -32,7 +31,7 @@
             <button class="btn btn-lg btn-block" aria-label="Left Align" id="upload" onclick="document.getElementById('filepicker').click();"><span
                     class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload
             </button>
-            <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo(document.getElementById('filepicker').files[0].name)">
+            <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo()">
         </div>
         <div class="col-lg-2">
             <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
@@ -217,7 +216,8 @@ ConsultaMaestro();
 <script src="js/editor/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/tab.js"></script>
-<script src="js/archivos.js"></script>
 <script src="js/analizadores/automata.js"></script>
+<script src="js/FileSaver.min.js"></script>
+<script src="js/archivos.js"></script>
 </body>
 </html>
