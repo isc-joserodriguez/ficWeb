@@ -27,6 +27,12 @@ function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
         nErrores++;
         return;
     }
+    if(/Alumno /.test(lin)){
+        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreAlumno ,");
+    }else if(/Maestro /.test(lin)){
+        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreMaestro ,");
+    }
+
     var token=lin.replace(";", " ;").split(" ");
 
     if(!validarAutomata(token,txtAutomata,txtErrores, token.length,nLin)){
