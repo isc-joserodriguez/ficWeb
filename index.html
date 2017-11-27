@@ -18,8 +18,11 @@
             </button>
         </div>
         <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile"><span
-                    class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
+            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile"
+                    class="glyphicon glyphicon-indent-right" aria-hidden="true"
+                    onclick="validarGramatica()"> <span
+                    class="glyphicon glyphicon-indent-right" aria-hidden="true"></span>Compile 
+
             </button>
         </div>
         <div class="col-lg-2">
@@ -65,11 +68,11 @@
 Alumno ( IDAlumno , Nombre , Carrera );
 Edificio ( IDEdificio , UVP );
 Grupo ( IDGrupo , B , 30 , ISC );
-Maestro ( IDMaestro , FIC , 9 , 12 , 14 , 18 );
-Aula ( ID , 2 , 12 , 40 );
+Maestro ( IDMaestro , FIC , 09 , 12 , 14 , 18 );
+Aula ( ID , B , 12 , 40 );
 Recurso ( IDRecurso , SerieRecurso , Cañón );
 Materia ( IDMateria , LYAII , ISC , 5 );
-Hora ( IDHora , L-M-X-J-V , 12 );
+Hora ( IDHora , LMXJV , 12 );
 AsignarRecurso ( IDRecurso , IDMateria );
 AsignarGrupo ( IDGrupo , IDMateria );
 AsignarEdificio ( IDEdificio , IDAula );
@@ -102,8 +105,23 @@ ConsultaMaestro();</pre>
             </div>
             <div id="Toke" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tokensOut" cols="62"
                                                               rows="16" readonly></textarea></div>
-            <div id="Tabl" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tablaSimbOut" cols="62"
-                                                              rows="16" readonly></textarea></div>
+            <div id="Tabl" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaSimbOut" cols="62"
+                                                              rows="16" readonly>
+            <table class="table divN" >
+                <thead text-align="center"> 
+                    <tr>
+                        <th>Num</th>
+                        <th>Token</th>
+                        <th>Tipo</th>
+                        <th>Fila</th>
+                        <th>Columna</th>
+                    </tr> 
+                </thead>
+                <tbody id="tablaS" > 
+                   
+                </tbody>
+                </table>                                                  
+                                                              </div></div>
         </div>
     </div>
 
@@ -203,6 +221,7 @@ ConsultaMaestro();</pre>
 <script src="js/jquery-3.2.1.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="js/tab.js"></script>
 <script src="js/analizadores/automata.js"></script>
+<script src="js/analizadores/gramatica.js"></script>
 <script src="js/FileSaver.min.js"></script>
 <script src="js/archivos.js"></script>
 </body>

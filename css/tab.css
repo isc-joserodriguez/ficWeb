@@ -41,6 +41,11 @@ div.tab button.active {
 .textArea {
     resize: none;
 }
+.divN {
+    resize: none;
+    height: 300px;
+    overflow: scroll;
+    }
 #modalaut .modal-dialog  {width:90%;}
 #modalGra .modal-dialog  {width:90%;}
 #modalInfo .modal-dialog  {width:80%;}
