@@ -1,6 +1,6 @@
-/*$("#compilar").on("click",function(){
+$("#compilar").on("click",function(){
 	console.log(editor.getValue())
-});*/
+});
 
 var nErrores=0, cToken=1;
 function analizarLxL(){
@@ -28,7 +28,7 @@ function validar(lin, txtAutomata, txtErrores, tokenArea, nLin){
 		nErrores++;
 		return;
 	}
-	String token[]=lin.replace(";", " ;").split(" ");
+	var token=lin.replace(";", " ;").split(" ");
 
 	if(!validarAutomata(token,txtAutomata,txtErrores,tokenArea, token.length,nLin,lin)){
 		nErrores++;
