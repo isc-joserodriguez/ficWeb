@@ -2,6 +2,7 @@
     var cToken = 0;
     var linea = "";
     var columna = 0;
+    var tipo = 0;
 
 function validarGramatica(){
     var exp = editor.getValue();
@@ -55,6 +56,7 @@ function validar(lin, txtGramatica, txtErrores, tokenArea, nLin) {
 
 function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, lin) {
     columna = 0;
+    tipo = token[0].length;
     var gramatica = $('#gramaticaOut').val();
     $('#gramaticaOut').val(""+gramatica+"1.- Se evalúa el token "+token[0]); 
             switch(token[0]){
@@ -504,28 +506,12 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
                  
                   case 5:
                     if(validarComa(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
-                    produccion=6;
-                    break;
-                    }else {
-                    return false;
-                    }
-                  
-                   case 6:
-                    if(validarID(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
-                    produccion=7;
-                    break;
-                    }else {
-                    return false;
-                    }
-                   
-                    case 7:
-                    if(validarComa(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
                     produccion=8;
                     break;
                     }else {
                     return false;
-                    }
-                    
+                } 
+            
                      case 8:
                     if(validarCantidad(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
                     produccion=9;
@@ -969,7 +955,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
 
       function validarParentesisi(txtGramatica, txtErrores, tokenArea,token, nLin) {
          cToken++;
-         columna = columna + token.length;
+         columna = columna + token.length+tipo;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -980,6 +966,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es una apertura de propiedades");
             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de agrupacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba un ( en la línea "+nLin+" columna "+columna);
@@ -987,7 +974,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
     
    function validarID(txtGramatica, txtErrores, tokenArea,token, nLin) {
-         columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -998,6 +984,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es ID");
              $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>ID alfanumerico</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba un ID en la línea "+nLin+" columna "+columna);
@@ -1005,7 +992,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
     
     function validarComa(txtGramatica, txtErrores, tokenArea,token, nLin) {
-        columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1016,6 +1002,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token , es valido");
              $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de puntuacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba una , en la línea "+nLin+" columna "+columna);
@@ -1023,7 +1010,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
 
      function validarComaOpcional(txtGramatica, txtErrores, tokenArea,token, nLin) {
-         columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1034,6 +1020,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token , es valido");
              $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de puntuación</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+           columna = columna + token.length;
             return true;
         }     
         if(evalER("^\\)$",token)){
@@ -1044,7 +1031,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
     
       function validarCantidad(txtGramatica, txtErrores, tokenArea,token, nLin) {
-          columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1054,7 +1040,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^[0-9]+$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es una cantidad");
-             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>número</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>número</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba una cantidad en la línea "+nLin+" columna "+columna);
@@ -1062,7 +1049,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
 
       function validarHora(txtGramatica, txtErrores, tokenArea,token, nLin) {
-         columna = columna + token.length; 
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1072,6 +1058,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^([0-1][0-9]|[2][0-4])$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es una hora");
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>hora</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba una hora en la línea "+nLin+" columna "+columna);
@@ -1079,7 +1067,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
       
      function validarNombre(txtGramatica, txtErrores, tokenArea,token, nLin) {
-         columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1089,7 +1076,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^[a-zA-Zñó]+$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es un nombre");
-             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>cadena</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>cadena</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba una cadena en la línea "+nLin+" columna "+columna);
@@ -1097,7 +1085,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
 
      function validarDia(txtGramatica, txtErrores, tokenArea,token, nLin) {
-         columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1107,7 +1094,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^L?M?X?J?V?$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token es un nombre");
-             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>cadena</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>día</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba un día en la línea "+nLin+" columna "+columna);
@@ -1115,7 +1103,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
      
       function validarParentesisf(txtGramatica, txtErrores, tokenArea,token, nLin) {
-          columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1125,7 +1112,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^\\)$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token ) es un cierre de funcion");
-             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de agrupacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de agrupacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba un )  en la línea "+nLin+" columna "+columna);
@@ -1133,7 +1121,6 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
     }
       
     function validarCierre(txtGramatica, txtErrores, tokenArea,token, nLin) {
-        columna = columna + token.length;
          var gramatica = $('#gramaticaOut').val();
           $('#gramaticaOut').val(gramatica+"Se evalúa el token "+token);
          var tokens = $('#tokensOut').val();
@@ -1143,7 +1130,8 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
         if(evalER("^\\;$",token)){
             gramatica = $('#gramaticaOut').val();
             $('#gramaticaOut').val(gramatica+"\nEl token ; es un cierre de instruccion");
-             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de puntuacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>signo de puntuacion</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
+            columna = columna + token.length;
             return true;
         }        
         $('#outPut').val(errores+"\nError: Se esperaba un ;  en la línea "+nLin+" columna "+columna);
