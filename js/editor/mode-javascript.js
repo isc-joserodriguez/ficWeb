@@ -59,24 +59,11 @@ var identifierRe = "[a-zA-Z\\$_\u00a1-\uffff][a-zA-Z\\d\\$_\u00a1-\uffff]*";
 var JavaScriptHighlightRules = function(options) {
     var keywordMapper = this.createKeywordMapper({
         "variable.language":
-            "puto|Array|Boolean|Date|Function|Iterator|Number|Object|RegExp|String|Proxy|"  + // Constructors
-            "Namespace|QName|XML|XMLList|"                                             + // E4X
-            "ArrayBuffer|Float32Array|Float64Array|Int16Array|Int32Array|Int8Array|"   +
-            "Uint16Array|Uint32Array|Uint8Array|Uint8ClampedArray|"                    +
-            "Error|EvalError|InternalError|RangeError|ReferenceError|StopIteration|"   + // Errors
-            "SyntaxError|TypeError|URIError|"                                          +
-            "decodeURI|decodeURIComponent|encodeURI|encodeURIComponent|eval|isFinite|" + // Non-constructor functions
-            "isNaN|parseFloat|parseInt|"                                               +
-            "JSON|Math|"                                                               + // Other
-            "this|arguments|prototype|window|document"                                 , // Pseudo
+            "ConsultaAula|ConsultaMaestro|Edificio|Grupo|Maestro|Alumno|Aula|Recurso|Materia|Hora",
         "keyword":
-            "const|yield|import|get|set|async|await|" +
-            "break|case|catch|continue|default|delete|do|else|finally|for|function|" +
-            "if|in|of|instanceof|new|return|switch|throw|try|typeof|let|var|while|with|debugger|" +
-            "__parent__|__count__|escape|unescape|with|__proto__|" +
-            "class|enum|extends|super|export|implements|private|public|interface|package|protected|static",
+            "AsignarRecurso|AsignarEdificio|AsignarGrupo|AsignarAula|AsignarMaestro|AsignarHora|AsignarAlumno",
         "storage.type":
-            "const|let|var|function",
+            "MostrarMaestrosunction",
         "constant.language":
             "null|Infinity|NaN|undefined",
         "support.function":
@@ -107,7 +94,7 @@ var JavaScriptHighlightRules = function(options) {
                 next  : "qqstring"
             }, {
                 token : "constant.numeric", // hexadecimal, octal and binary
-                regex : /0(?:[xX][0-9a-fA-F]+|[oO][0-7]+|[bB][01]+)\b/
+                regex : /(?:\d\d*(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+\b)?:(?:\d\d*(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+\b)?/
             }, {
                 token : "constant.numeric", // decimal integers and floats
                 regex : /(?:\d\d*(?:\.\d*)?|\.\d+)(?:[eE][+-]?\d+\b)?/
