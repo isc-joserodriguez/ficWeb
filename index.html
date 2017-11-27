@@ -62,43 +62,29 @@
             </div>
             <div id="Asig" class="tabcontentAsiCon">
                 <pre id="codeArea1">
-//********DECLARACIÓN***********
-Edificio(IDEdificio,UVP);
-Grupo(IDGrupo,B,30,ISC);
-Maestro(IDMaestro,FIC,3,10,13);
-Aula(ID,2,12,40);
-Recurso(IDRecurso,SerieRecurso,Cañón);
-Materia(IDMateria,LYAII,ISC,5);
-Hora(IDHora,L-M-X-J-V,12-13);
-
-
-//********ASIGNACIÓN************
-AsignarRecurso(IDRecurso,IDMateria);
-AsignarGrupo(IDGrupo,IDMateria,);
-AsignarEdificio(IDEdificio,IDAula);
-AsignarAula(IDAula,IDGrupo);
-AsignarMaestro(IDMaestro,IDGrupo);
-AsignarHora(IDHora,IDGrupo);
-AsignarAlumno(IDAlumno,IDGrupo)
-</pre>
+Alumno ( IDAlumno , Nombre , Carrera );
+Edificio ( IDEdificio , UVP );
+Grupo ( IDGrupo , B , 30 , ISC );
+Maestro ( IDMaestro , FIC , 9 , 12 , 14 , 18 );
+Aula ( ID , 2 , 12 , 40 );
+Recurso ( IDRecurso , SerieRecurso , Cañón );
+Materia ( IDMateria , LYAII , ISC , 5 );
+Hora ( IDHora , L-M-X-J-V , 12 );
+AsignarRecurso ( IDRecurso , IDMateria );
+AsignarGrupo ( IDGrupo , IDMateria );
+AsignarEdificio ( IDEdificio , IDAula );
+AsignarAula ( IDAula , IDGrupo );
+AsignarMaestro ( IDMaestro , IDGrupo );
+AsignarHora ( IDHora , IDGrupo );
+AsignarAlumno ( IDAlumno , IDGrupo );</pre>
             </div>
             <div id="Cons" class="tabcontentAsiCon">
                 <pre id="codeArea2">
-//*******Consultas**************
+ConsultaAula(materia:IDMateria);
+ConsultaAula(materia:IDMateria, hora: IDHora|12);
 
-//Consultar las aulas que están disponibles para tal materia
-//Consultar las aulas que están disponibles para tal materia en tal hora
-
-
-ConsultaAula(materia:IDMateria) //trae la aulas que cumplen los requisitos del grupo
-ConsultaAula(materia:IDMateria, hora: IDHora|12)// //trae la aulas que cumplen los requisitos del grupo en una hora determinada
-
-ConsultaMaestro(hora:IDHora); //
-ConsultaMaestro();
-—-------Maestros----------------
-—-------Maestros----------------
-—-------Maestros----------------
-</pre>
+ConsultaMaestro(hora:IDHora);
+ConsultaMaestro();</pre>
             </div>
         </div>
         <div class="col-lg-5">
@@ -130,13 +116,13 @@ ConsultaMaestro();
             <div class="tab">
                 <div class="col-sm-6">
                     <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Auto')"
-                            ondblclick=" $('#modalaut').show('modal');" id="defaultAut">
+                            ondblclick=" $('#modalaut').show('modal');$('#modalAutOut').val($('#automataOut').val())" id="defaultAut">
                         Automata
                     </button>
                 </div>
                 <div class="col-sm-6">
                     <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Gram')"
-                            ondblclick="$('#modalGra').show('modal');">Gramatica
+                            ondblclick="$('#modalGra').show('modal');$('#modalGraOut').val($('#gramaticaOut').val())">Gramatica
                     </button>
                 </div>
             </div>
