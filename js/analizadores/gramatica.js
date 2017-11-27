@@ -5,7 +5,6 @@
 
 function validarGramatica(){
     var exp = editor.getValue();
-    console.log(editor.getValue());
     var txtGramatica = $('#gramaticaOut');
     var txtErrores = $('#outPut');
     var tokenArea = $("#tokensOut");

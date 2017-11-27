@@ -1,6 +1,5 @@
 var nErrores=0;
 function ComenzarAutomata(){
-    console.log(editor.getValue());
     var automataArea= $('#automataOut');
     var errorArea=$('#outPut');
     analizarLineasAut(automataArea,errorArea,editor.getValue());
@@ -153,6 +152,8 @@ function  validarAutomata(token, txtAutomata, txtErrores,  tam, nLin) {
                 break;
             case 39:
                 return false;
+            case 1000:
+                return true;
         }
         txtAutomata.val(txtAutomata.val()+"\n\n");
         con++;
@@ -167,7 +168,7 @@ function validarQ1(txtAutomata, txtErrores,  token, nLin) {
         case "Materia":
         case "Aula":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q24");
-            return 24;
+            return 1000;
         case "Hora":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q18");
             return 18;
@@ -362,7 +363,6 @@ function validarQ17(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
     
     var exp=/^\d$|^\d\d$|^\d\d\d$/
-    console.log(exp.test(token));
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q4");
         return 4;
