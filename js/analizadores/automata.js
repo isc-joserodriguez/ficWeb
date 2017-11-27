@@ -28,10 +28,10 @@ function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
         return;
     }
     if(/Alumno /.test(lin)){
-        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreAlumno ,");
-    }else if(/Maestro /.test(lin)){
-        lin=lin.replace(/, \w+ \w+ \w+ ,|, \w+ \w+ ,|, \w+ \w+ \w+ \w+ ,/,", NombreMaestro ,");
-    }
+            lin=lin.replace(/, [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ ,|, [a-zA-Zñó]+ [a-zA-Zñó]+ ,|, [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ ,/,", NombreAlumno ,");
+        }else if(/Maestro /.test(lin)){
+            lin=lin.replace(/, [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ ,|, [a-zA-Zñó]+ [a-zA-Zñó]+ ,|, [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ [a-zA-Zñó]+ ,/,", NombreMaestro ,");
+        }
 
     var token=lin.replace(";", " ;").split(" ");
 
