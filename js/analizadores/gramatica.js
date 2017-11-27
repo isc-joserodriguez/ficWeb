@@ -10,9 +10,8 @@ function validarGramatica(){
     var txtErrores = $('#outPut');
     var tokenArea = $("#tokensOut");
     $('#gramaticaOut').val("");
-    $('#outPut').val("");
     $('#tokensOut').val("");
-    $("#tablaS tr").remove(); 
+    $("#tablaS tr").remove();
 
     analizaLxl(txtGramatica,txtErrores, tokenArea, exp);
 
@@ -32,10 +31,10 @@ function analizaLxl(txtGramatica,txtErrores, tokenArea, exp){
 
          if(nErrores!=0){
              var errores = $('#outPut').val();
-             $('#outPut').val(errores+"\n\nEl código se ejecutó con errores");
+             $('#outPut').val(errores+"\n\nEl código se ejecutó con errores.");
          }else{
              var errores = $('#outPut').val();
-            $('#outPut').val(errores+"\n\nEl código se ejecutó sin errores");
+            $('#outPut').val(errores+"\n\nEl código se ejecutó sin errores.");
          }
 }
 

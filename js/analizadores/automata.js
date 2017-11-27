@@ -1,27 +1,25 @@
-var nErrores=0, cToken=1;
-$('#compile').on("click",function(){
+var nErrores=0;
+function ComenzarAutomata(){
     console.log(editor.getValue());
     var automataArea= $('#automataOut');
     var errorArea=$('#outPut');
     analizarLineasAut(automataArea,errorArea,editor.getValue());
-});
-
+};
 function analizarLineasAut(txtAutomata,txtErrores,exp) {
     var lin=exp.split("\n");
-    //txtAutomata.val("");
-    //txtErrores.val("");
-    
-    cToken=1;
+    txtAutomata.val("");
+    txtErrores.val("");
     nErrores=0;
     for(var i=0;i<lin.length;i++){
         if(lin[i]!=""&&lin[i]!=" ")
         validarAutLin(lin[i],txtAutomata,txtErrores,i+1);
     }
+    /*
     if(nErrores!=0){
-        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó con errores");
+        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó con errores léxicos.");
     }else{
-        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó sin errores");
-    }
+        txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó sin errores léxicos.");
+    }*/
 }
 
 function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
@@ -157,7 +155,6 @@ function  validarAutomata(token, txtAutomata, txtErrores,  tam, nLin) {
                 return false;
         }
         txtAutomata.val(txtAutomata.val()+"\n\n");
-        cToken++;
         con++;
     }
     return estado==12;
