@@ -1,8 +1,6 @@
 var nErrores=0, cToken=1;
 $('#compile').on("click",function(){
-
     console.log(editor.getValue());
-
     var automataArea= $('#automataOut');
     var errorArea=$('#outPut');
     analizarLineasAut(automataArea,errorArea,editor.getValue());
