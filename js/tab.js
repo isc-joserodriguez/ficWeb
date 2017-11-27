@@ -1,3 +1,4 @@
+
 function openAsiCon(evt, editor) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontentAsiCon");
@@ -39,6 +40,7 @@ function openAutGra(evt, editor) {
     document.getElementById(editor).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
 
 document.getElementById("defaultAsi").click();
 document.getElementById("defaultTok").click();

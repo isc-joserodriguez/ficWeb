@@ -5,20 +5,19 @@ $('#compile').on("click",function(){
 
     var automataArea= $('#automataOut');
     var errorArea=$('#outPut');
-    var tokenArea=$('#tokensOut');
-    analizarLxL(automataArea,errorArea,tokenArea,editor.getValue());
+    analizarLineasAut(automataArea,errorArea,editor.getValue());
 });
 
-function analizarLxL(txtAutomata,txtErrores,tokenArea,exp) {
+function analizarLineasAut(txtAutomata,txtErrores,exp) {
     var lin=exp.split("\n");
-    txtAutomata.val("");
-    txtErrores.val("");
-    tokenArea.val("");
+    //txtAutomata.val("");
+    //txtErrores.val("");
+    
     cToken=1;
     nErrores=0;
     for(var i=0;i<lin.length;i++){
         if(lin[i]!=""&&lin[i]!=" ")
-        validar(lin[i],txtAutomata,txtErrores,tokenArea,i+1);
+        validarAutLin(lin[i],txtAutomata,txtErrores,i+1);
     }
     if(nErrores!=0){
         txtErrores.val(txtErrores.val()+"\n\nEl código se ejecutó con errores");
@@ -27,7 +26,7 @@ function analizarLxL(txtAutomata,txtErrores,tokenArea,exp) {
     }
 }
 
-function validar(lin, txtAutomata, txtErrores, tokenArea, nLin) {
+function validarAutLin(lin, txtAutomata, txtErrores,  nLin) {
     if(!lin.substring(lin.length-1,lin.length)==";"){
         //txtErrores.val(txtErrores.val()+"\nError: Se esperba un ; en la línea "+nLin+" columna "+lin.length());
         nErrores++;
@@ -35,126 +34,126 @@ function validar(lin, txtAutomata, txtErrores, tokenArea, nLin) {
     }
     var token=lin.replace(";", " ;").split(" ");
 
-    if(!validarAutomata(token,txtAutomata,txtErrores,tokenArea, token.length,nLin)){
+    if(!validarAutomata(token,txtAutomata,txtErrores, token.length,nLin)){
         nErrores++;
     }
 }
 
-function  validarAutomata(token, txtAutomata, txtErrores, tokenArea, tam, nLin) {
+function  validarAutomata(token, txtAutomata, txtErrores,  tam, nLin) {
     var estado=1,con=0;
     while(con!=tam){
         txtAutomata.val(txtAutomata.val()+(con+1)+".- ");
         switch(estado){
             case 1:
-                estado=validarQ1(txtAutomata,txtErrores,tokenArea,token[con]);
+                estado=validarQ1(txtAutomata,txtErrores,token[con]);
                 break;
             case 2:
-                estado=validarQ2(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ2(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 3:
-                estado=validarQ3(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ3(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 4:
-                estado=validarQ4(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ4(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 5:
-                estado=validarQ5(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ5(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 6:
-                estado=validarQ6(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ6(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 7:
-                estado=validarQ7(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ7(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 8:
-                estado=validarQ8(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ8(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 9:
-                estado=validarQ9(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ9(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 10:
-                estado=validarQ10(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ10(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 11:
-                estado=validarQ11(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ11(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 13:
-                estado=validarQ13(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ13(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 14:
-                estado=validarQ14(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ14(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 15:
-                estado=validarQ15(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ15(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 16:
-                estado=validarQ16(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ16(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 17:
-                estado=validarQ17(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ17(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 18:
-                estado=validarQ18(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ18(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 19:
-                estado=validarQ19(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ19(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 20:
-                estado=validarQ20(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ20(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 21:
-                estado=validarQ21(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ21(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 22:
-                estado=validarQ22(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ22(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 23:
-                estado=validarQ23(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ23(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 24:
-                estado=validarQ24(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ24(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 25:
-                estado=validarQ25(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ25(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 26:
-                estado=validarQ26(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ26(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 27:
-                estado=validarQ27(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ27(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 28:
-                estado=validarQ28(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ28(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 29:
-                estado=validarQ29(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ29(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 30:
-                estado=validarQ30(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ30(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 31:
-                estado=validarQ31(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ31(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 32:
-                estado=validarQ32(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ32(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 33:
-                estado=validarQ33(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ33(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 34:
-                estado=validarQ34(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ34(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 35:
-                estado=validarQ35(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ35(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 36:
-                estado=validarQ36(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ36(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 37:
-                estado=validarQ37(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ37(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 38:
-                estado=validarQ38(txtAutomata,txtErrores,tokenArea,token[con],nLin);
+                estado=validarQ38(txtAutomata,txtErrores,token[con],nLin);
                 break;
             case 39:
                 return false;
@@ -166,9 +165,9 @@ function  validarAutomata(token, txtAutomata, txtErrores, tokenArea, tam, nLin) 
     return estado==12;
 }
 
-function validarQ1(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ1(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "Materia":
         case "Aula":
@@ -204,9 +203,9 @@ function validarQ1(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ2(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ2(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
 
     switch(token){
         case "(":
@@ -218,18 +217,18 @@ function validarQ2(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ3(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ3(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q4");
     return 4;
 
 }
 
-function validarQ4(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ4(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q5");
@@ -240,17 +239,17 @@ function validarQ4(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ5(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ5(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q10");
     return 10;
 }
 
-function validarQ6(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ6(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "(":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q7");
@@ -261,17 +260,17 @@ function validarQ6(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ7(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ7(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q8");
     return 8;
 }
 
-function validarQ8(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ8(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q3");
@@ -282,9 +281,9 @@ function validarQ8(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ9(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ9(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "(":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q13");
@@ -295,9 +294,9 @@ function validarQ9(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ10(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ10(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ")":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q11");
@@ -308,9 +307,9 @@ function validarQ10(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ11(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ11(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ";":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q12");
@@ -321,17 +320,17 @@ function validarQ11(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ13(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ13(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q14");
     return 14;
 }
 
-function validarQ14(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ14(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
 
     switch(token){
         case ",":
@@ -343,17 +342,17 @@ function validarQ14(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ15(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ15(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q16");
     return 16;
 }
 
-function validarQ16(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ16(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q17");
@@ -364,9 +363,9 @@ function validarQ16(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ17(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ17(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     console.log(exp.test(token));
     if(exp.test(token)){
@@ -377,9 +376,9 @@ function validarQ17(txtAutomata, txtErrores, tokenArea, token, nLin) {
     return 39;
 }
 
-function validarQ18(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ18(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "(":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q19");
@@ -390,17 +389,17 @@ function validarQ18(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ19(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ19(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q20");
     return 20;
 }
 
-function validarQ20(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ20(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q21");
@@ -412,17 +411,17 @@ function validarQ20(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ21(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ21(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q37");
     return 37;
 }
 /*
-function validarQ22(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ22(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q23");
@@ -433,9 +432,9 @@ function validarQ22(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 */
-function validarQ23(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ23(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q10");
@@ -445,9 +444,9 @@ function validarQ23(txtAutomata, txtErrores, tokenArea, token, nLin) {
     return 39;
 }
 
-function validarQ24(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ24(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "(":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q25");
@@ -458,17 +457,17 @@ function validarQ24(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ25(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ25(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q26");
     return 26;
 }
 
-function validarQ26(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ26(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q19");
@@ -480,9 +479,9 @@ function validarQ26(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ27(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ27(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case "(":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q28");
@@ -493,18 +492,18 @@ function validarQ27(txtAutomata, txtErrores, tokenArea, token, nLin) {
     }
 }
 
-function validarQ28(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ28(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q29");
     return 29;
 
 }
 
-function validarQ29(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ29(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q30");
@@ -516,18 +515,18 @@ function validarQ29(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ30(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ30(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     //txt
     txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q31");
     return 31;
 
 }
 
-function validarQ31(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ31(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q32");
@@ -539,9 +538,9 @@ function validarQ31(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ32(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ32(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q33");
@@ -552,9 +551,9 @@ function validarQ32(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ33(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ33(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q34");
@@ -566,9 +565,9 @@ function validarQ33(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ34(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ34(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q35");
@@ -579,9 +578,9 @@ function validarQ34(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ35(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ35(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q36");
@@ -593,9 +592,9 @@ function validarQ35(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ36(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ36(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     if(exp.test(token)){
         txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q37");
@@ -606,9 +605,9 @@ function validarQ36(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 
-function validarQ37(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ37(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
     switch(token){
         case ",":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q38");
@@ -620,9 +619,9 @@ function validarQ37(txtAutomata, txtErrores, tokenArea, token, nLin) {
 
 }
 /*
-function validarQ38(txtAutomata, txtErrores, tokenArea, token, nLin) {
+function validarQ38(txtAutomata, txtErrores,  token, nLin) {
     txtAutomata.val(txtAutomata.val()+"Se evalúa el token "+token);
-    tokenArea.val(tokenArea.val()+"\n"+cToken+".- "+token);
+    
 
     var exp=/^\d$|^\d\d$|^\d\d\d$/
     if(exp.test(token)){
