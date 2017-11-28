@@ -198,8 +198,10 @@ function validarQ1(txtAutomata, txtErrores,  token, nLin) {
         case "Maestro":
             txtAutomata.val(txtAutomata.val()+"\nSe hace una transición a Q27");
             return 27;
-
         default:
+            if(/\w*|(|)/.test(token)){
+                return 39;
+            }
             txtErrores.val(txtErrores.val()+"\nSe desconoce el token "+token+" en la línea "+nLin);
             return 39;
     }
