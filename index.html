@@ -63,21 +63,17 @@
             </div>
             <div id="Asig" class="tabcontentAsiCon">
                 <pre id="codeArea1">
-Alumno ( IDAlumno , Nombre , Carrera );
-Edificio ( IDEdificio , UVP );
-Grupo ( IDGrupo , B , 30 , ISC );
-Maestro ( IDMaestro , FIC , 09 , 12 , 14 , 18 );
-Aula ( ID , B , 40 );
-Recurso ( IDRecurso , SerieRecurso , Cañón );
-Materia ( IDMateria , LYAII , ISC , 5 );
-Hora ( IDHora , LMXJV , 12 );
-AsignarRecurso ( IDRecurso , IDMateria );
-AsignarGrupo ( IDGrupo , IDMateria );
-AsignarEdificio ( IDEdificio , IDAula );
-AsignarAula ( IDAula , IDGrupo );
-AsignarMaestro ( IDMaestro , IDGrupo );
-AsignarHora ( IDHora , IDGrupo );
-AsignarAlumno ( IDAlumno , IDGrupo );</pre>
+Recurso ( 1 , asd , Proyector );
+Recurso ( 2 , qwe , Proyector );
+Recurso ( 3 , gdf , Proyector );
+Aula ( 1 , SV , 40 );
+Grupo ( 1 , B , 30 , ISC );
+Hora ( 1 , LMXJV , 12 );
+Materia ( 1 , LYAII , ISC , 5 );
+AsignarHora ( 1 , 1 );
+AsignarGrupo ( 1 , 1 );
+AsignarRecurso ( Proyector , 1 );
+AsignarRecurso ( 1 , 1 );</pre>
             </div>
             <div id="Cons" class="tabcontentAsiCon">
                 <pre id="codeArea2">
