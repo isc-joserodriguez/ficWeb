@@ -20,6 +20,7 @@ function inicializar(){
     Recurso=[];
     Materia=[];
     Hora=[];
+     
     var lin=editor.getValue().split("\n");
     for(let a of lin){
         var indice=a.indexOf(" ");
@@ -79,9 +80,28 @@ function inicializar(){
 
             
         }
+        
     }
-    imprimirTokio();
+
+    var lin2=editor2.getValue().split("\n");
+    for(let a of lin2){
+        var indice= a.indexOf(" ");
+        var prop =  a.substring(a.indexOf(" ")+3,a.length-3).split(" , ");
+        switch(a.substring(0,indice)){
+            case "ConsultaAula":
+                consultaAula(prop[0]);
+                break;
+            case "ConsultaDisponibilidad":
+                consultaDisponibilidad(prop[0]);
+                break;
+    }
 }
+       
+    imprimirTokio();
+    consultaAula(1);
+    consultaDisponibilidad(1);
+}
+
 function imprimirTokio() {
     /*
     console.log(
@@ -489,6 +509,43 @@ function buscar(arr,ele){
     }
     return -1
 }
+
+
+function consultaAula(idMateria) {
+    var contador = 0;
+    var i = 0;
+    for(let a of Aula){
+        for(let m of Materia)
+        if (idMateria = Materia.id){
+            for (i;i<m.recursos.length;i++) 
+            if(a.recursos[i] == m.recursos[i]){
+            contador++;
+        }
+        if (contador = m.recursos.length){
+            $('#outPut').val($('#outPut').val()+"\n"+"EL aula "+ a.nombre+ " está disponible");
+    }
+        
+        }
+       $('#outPut').val($('#outPut').val()+"\n"+"no existe la materia");
+    }
+   $('#outPut').val($('#outPut').val()+"\n"+"no hay aulas disponible para esa materia");
+}
+
+function cosultaDisponibilidad(idGrupo){
+    for(let g of Grupo){
+        if (idGrupo == g.id){
+            if (capacidad > g.alumnos.length){
+               $('#outPut').val($('#outPut').val()+"\n"+"Si hay espacios disponibles");
+            }
+             $('#outPut').val($('#outPut').val()+"\n"+"no hay espacios disponibles");
+        }
+         $('#outPut').val($('#outPut').val()+"\n"+"no se encontró el grupo");
+    }
+    
+
+}
+
+
 //console.log(busca_id(13400490));
 
 
