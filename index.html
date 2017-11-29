@@ -9,36 +9,40 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar navbar-fixed-top">
+<nav class="navbar">
     <div class="container-fluid">
-        <div class="col-lg-2"><img src="resources/Logo.png" width="120px" height="50px"></div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="run" onclick="inicializar();">
-                <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
-            </button>
-        </div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile" onclick="analizadores();">
-                <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
+        <div class="row">
+            
+            <div class="col-md-2"><img src="resources/Logo.png" width="120px" height="50px"></div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="run" onclick="inicializar();">
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile" onclick="analizadores();">
+                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
 
-            </button>
-        </div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="save" onclick="guardarArchivo()"><span
-                    class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
-            </button>
-        </div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="upload" onclick="document.getElementById('filepicker').click();"><span
-                    class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload
-            </button>
-            <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo()">
-        </div>
-        <div class="col-lg-2">
-            <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
-                    onclick="$('#modalInfo').show('modal')"><span
-                    class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info
-            </button>
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="save" onclick="guardarArchivo()"><span
+                        class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="upload" onclick="document.getElementById('filepicker').click();"><span
+                        class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload
+                </button>
+                <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo()">
+            </div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
+                        onclick="$('#modalInfo').show('modal')"><span
+                        class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info
+                </button>
+            </div>
+    
         </div>
     </div>
 </nav>
@@ -48,14 +52,14 @@
         <p>&nbsp</p>
     </div>
     <div class="row form-group">
-        <div class="col-lg-7">
+        <div class="col-md-7">
             <div class="tab">
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <button class="tablinksAsiCon btn-block" onclick="openAsiCon(event, 'Asig')" id="defaultAsi">
                         Asignaciones
                     </button>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <button class="tablinksAsiCon btn-block" onclick="openAsiCon(event, 'Cons')">
                         Consultas
                     </button>
@@ -86,14 +90,14 @@ ConsultaMaestro(hora:IDHora);
 ConsultaMaestro();</pre>
             </div>
         </div>
-        <div class="col-lg-5">
+        <div class="col-md-5">
             <div class="tab">
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'Toke')" id="defaultTok">
                         Tokens
                     </button>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-md-6">
                     <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'Tabl')">
                         Tab. Simbolos
                     </button>
@@ -127,7 +131,7 @@ ConsultaMaestro();</pre>
             <h4>Salida</h4>
             <textarea class="textArea" name="outPut" id="outPut" cols="79" rows="8" readonly></textarea>
         </div>
-        <div class="col-lg-5">
+        <div class="col-md-5">
             <div class="tab">
                 <div class="col-sm-6">
                     <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Auto')"
