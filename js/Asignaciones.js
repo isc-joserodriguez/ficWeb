@@ -7,7 +7,7 @@ var Aula=[];
 var Recurso=[];
 var Materia=[];
 var Hora=[];
-var disponible=[7,8,9,10,11,12,13,14,15,16,17,18,19,20,21]
+var disponible=["7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"]
 
 function inicializar(){
     $('#outPut').val("");
@@ -57,23 +57,27 @@ function inicializar(){
             case "AsignarGrupo":
                 asignarGrupo(prop[0],prop[1]);
                 break;
-                /*
+                
             case "AsignarEdificio":
+                asignarEdificio ( prop[0] , prop[1] );
                 break;
 
             case "AsignarAula":
+                asignarAula(prop[0],prop[1]);
                 break;
 
             case "AsignarMaestro":
-                break;*/
+                asignarMaestro(prop[0],prop[1]);
+                break;
             case "AsignarHora":
                 asignarHora(prop[0],prop[1]);
                 break;
-/*
+
             case "AsignarAlumno":
+                asignarAlumno(prop[0],prop[1]);
                 break;
 
-            */
+            
         }
     }
     imprimirTokio();
@@ -94,6 +98,7 @@ function imprimirTokio() {
         "Grupos: \t"+JSON.stringify(Grupo)+"\n"+
         "Aulas: \t"+JSON.stringify(Aula)+"\n"+
         "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
+        "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
         "Horas: \t"+JSON.stringify(Hora))
 
 }
@@ -138,7 +143,7 @@ function declaraGrupo ( id , nombre , capacidad , carrera ){
         }
     }
     if(exist){
-        $('#outPut').val($('#outPut').val()+"\n"+"Error el id de grupos y aulas no puede repetirse.");
+        $('#outPut').val($('#outPut').val()+"\n"+"Error los id de grupos y aulas no puede repetirse.");
     }else {
         Grupo.push({id:id,nombre:nombre,capacidad:capacidad,carrera:carrera,alumnos:[],recursos:[],materia:"",hora:""});
         $('#outPut').val($('#outPut').val()+"\n"+"Se guardo correctamente el grupo");
@@ -235,82 +240,13 @@ function asignarHora ( idHora , idGrupo ){
             grupo.hora=hora.hora;
             $('#outPut').val($('#outPut').val()+"\n"+"Se asignó la hora correctamente.");
         }else{
-            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+idGrupo+"-");
+            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+idGrupo+".");
         }
     }else{
         $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra hora con id= "+idHora+".");
     }
 }
 //idRec, aul o Mat
-function asignarRecurso2 ( Rec, aulGrup ){
-    var recurso=buscarRecNom(Rec);
-    var indexRec=indiceBusqueda;
-    if(recurso){
-        var grupo=buscarGrupoID(aulGrup);
-        if(grupo){
-            if(grupo.materia==""){
-                $('#outPut').val($('#outPut').val()+"\n"+"Primero debe asignarse una materia al grupo con id= "+aulGrup+".");
-            }else if(grupo.hora==null){
-                $('#outPut').val($('#outPut').val()+"\n"+"Primero debe asignarse una hora al grupo con id= "+aulGrup+".");
-            }else{
-                if(Grupo[indiceBusqueda].recursos.length==0){
-                    Grupo[indiceBusqueda].recursos.push(Rec);
-                    eliminarDisponible(Recurso[indexRec].disponible,grupo.hora);
-                    $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso.");
-                }else{
-                    let existe=false;
-                    for(let a of Grupo[indiceBusqueda].recursos){
-                        if(a==Rec){
-                            existe=true;
-                        }
-                    }
-                    if(existe){
-                        $('#outPut').val($('#outPut').val()+"\n"+"Ya existe el recurso para el grupo.");
-                    }else{
-                        eliminarDisponible(Recurso[indexRec].disponible,grupo.hora);
-                        Grupo[indiceBusqueda].recursos.push(Rec);
-                        $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso.");
-                    }
-                }
-            }
-        }else{
-            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+aulGrup+".");
-        }
-    }else{
-        recurso=buscarRecId(Rec);
-        indexRec=indiceBusqueda;
-        if(recurso){
-            var aula=buscarAulaID(aulGrup);
-            if(aula){
-                if(Aula[indiceBusqueda].recursos.length==0){
-                    Aula[indiceBusqueda].recursos.push(Rec);
-                    Recurso[indexRec].disponible=[];
-                    $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso al aula.");
-                }else{
-                    let existe=false;
-                    for(let a of Aula[indiceBusqueda].recursos){
-                        if(a==Rec){
-                            existe=true;
-                        }
-                    }
-                    if(existe){
-                        $('#outPut').val($('#outPut').val()+"\n"+"Ya existe el recurso para el aula.");
-                    }else{
-                        Recurso[indexRec].disponible=[];
-                        Aula[indiceBusqueda].recursos.push(recurso.id);
-                        $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso al aula.");
-                    }
-                }                
-            }else{
-
-                $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra aula con id= "+aulGrup+".");
-            }
-        }else{
-            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra recurso con id= "+Rec+" o recurso "+Rec+".");
-        }
-    }
-}
-
 function asignarRecurso ( Rec, aulGrup ){
     var grupo=buscarGrupoID(aulGrup);
     var indexGrupo=indiceBusqueda;
@@ -351,9 +287,12 @@ function asignarRecurso ( Rec, aulGrup ){
         var aula=buscarAulaID(aulGrup);
         var indexAula=indiceBusqueda;
         if(aula){
+            var recurso=buscarRecId(Rec);
+            var indexRec=indiceBusqueda;
+            if(recurso){
                 if(Aula[indexAula].recursos.length==0){
                     Aula[indexAula].recursos.push(Rec);
-                    Recurso[indexAula].disponible=[];
+                    Recurso[indexRec].disponible=[];
                     $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso al aula.");
                 }else{
                     let existe=false;
@@ -370,6 +309,7 @@ function asignarRecurso ( Rec, aulGrup ){
                         $('#outPut').val($('#outPut').val()+"\n"+"Se asignó el recurso al aula.");
                     }
                 }
+            }
         }else{
             $('#outPut').val($('#outPut').val()+"\n"+"No existe aula/grupo con id= "+aulGrup+".");
         }
@@ -398,21 +338,66 @@ function asignarGrupo ( idGrupo , idMateria ){
     }
 
 }
-function asignarEdificio ( IDEdificio , IDAula ){
+function asignarEdificio ( idEdificio , idAula ){
+    aula=buscarAulaID(idAula);
+    if(aula){
+        edificio=buscarEdID(idEdificio);
+        if(edificio){
+            Edificio[indiceBusqueda].aulas.push(aula.id);
+        }else{
+            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra edificio con id= "+idEdificio+".");
+        }
+    }else{
+        $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra aula con id= "+idAula+".");
+    }
 
 }
-function asignarAula ( IDAula , IDGrupo ){
+function asignarAula ( idAula , idGrupo ){
+    aula=buscarAulaID(idAula);
+    if(aula){
+        grupo=buscarGrupoID(idGrupo);
+        if(grupo){
+            Grupo[indiceBusqueda].aula=aula.id;
+        }else{
+            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra edificio con id= "+idEdificio+".");
+        }
+    }else{
+        $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra aula con id= "+idAula+".");
+    }
+}
+function asignarMaestro ( idMaestro , idGrupo ){
+    maestro=buscarMaeID(idMaestro);
+    if(maestro){
+        grupo=buscarGrupoID(idGrupo);
+        if(grupo){
+            Grupo[indiceBusqueda].maestro=maestro.id;
+        }else{
+            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+idGrupo+".");
+        }
+    }else{
+        $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra maestro con id= "+idMaestro+".");
+    }
 
 }
-function asignarMaestro ( IDMaestro , IDGrupo ){
 
-}
-
-function asignarAlumno ( IDAlumno , IDGrupo ){
+function asignarAlumno ( idAlumno , idGrupo ){
+    alumno=buscarAlumID(idAlumno);
+    if(alumno){
+        grupo=buscarGrupoID(idGrupo);
+        if(grupo){
+            Grupo[indiceBusqueda].alumnos.push(alumno.id);
+        }else{
+            $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+idGrupo+".");
+        }
+    }else{
+        $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra alumno con id= "+idAlumno+".");
+    }
 
 }
 function buscarRecNom(nombre,hora) {
     for(indiceBusqueda=0;indiceBusqueda<Recurso.length;indiceBusqueda++){
+        console.log(nombre+" - "+hora);
+        console.log(Recurso[indiceBusqueda]);
         if(Recurso[indiceBusqueda].nombre==nombre && buscar(Recurso[indiceBusqueda].disponible,hora)!=-1){
             return Recurso[indiceBusqueda];
         }
@@ -451,6 +436,15 @@ function buscarAulaID(idAula) {
     for(indiceBusqueda=0;indiceBusqueda<Aula.length;indiceBusqueda++){
         if(Aula[indiceBusqueda].id==idAula){
             return Aula[indiceBusqueda];
+        }
+    }
+    return false;
+}
+
+function buscarEdID(idEdificio){
+    for(indiceBusqueda=0;indiceBusqueda<Edificio.length;indiceBusqueda++){
+        if(Edificio[indiceBusqueda].id==idEdificio){
+            return Edificio[indiceBusqueda];
         }
     }
     return false;
