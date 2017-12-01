@@ -26,14 +26,13 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <button class="btn btn-lg btn-block" aria-label="Left Align" id="">
-                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span>
+                    <span class="glyphicon glyphicon-share-alt"></span> <span class="hidden-sm hidden-xs">Consulta</span>
 
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <button class="btn btn-lg btn-block" aria-label="Left Align" id="">
-                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span>
-
+                    <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Gen. Cod.</span> 
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
@@ -152,7 +151,7 @@ ConsultaMaestro();</pre>
                         <th>Token</th>
                         <th>Tipo</th>
                         <th>Fila</th>
-                        <th>Columna</th>
+                        <th>Columasdsana</th>
                     </tr>
                     </thead>
                     <tbody id="tablaD" >
@@ -302,6 +301,23 @@ Producciones{
             </div>
             <div class="modal-body">
                 <div class="row">
+<pre>
+Alumno ( IDAlumno , Nombre , Carrera );
+Edificio ( IDEdificio , UVP );
+Grupo ( IDGrupo , B , 30 , ISC );
+Maestro ( IDMaestro , FIC , 09 , 12 , 14 , 18 );
+Aula ( ID , B , 40 );
+Recurso ( IDRecurso , SerieRecurso , Cañón );
+Materia ( IDMateria , LYAII , ISC , 5 );
+Hora ( IDHora , LMXJV , 12 );
+AsignarRecurso ( IDRecurso , IDMateria );
+AsignarGrupo ( IDGrupo , IDMateria );
+AsignarEdificio ( IDEdificio , IDAula );
+AsignarAula ( IDAula , IDGrupo );
+AsignarMaestro ( IDMaestro , IDGrupo );
+AsignarHora ( IDHora , IDGrupo );
+AsignarAlumno ( IDAlumno , IDGrupo );
+</pre>
 
                 </div>
             </div>

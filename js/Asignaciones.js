@@ -83,23 +83,8 @@ function inicializar(){
         
     }
 
-    var lin2=editor2.getValue().split("\n");
-    for(let a of lin2){
-        var indice= a.indexOf(" ");
-        var prop =  a.substring(a.indexOf(" ")+3,a.length-3).split(" , ");
-        switch(a.substring(0,indice)){
-            case "ConsultaAula":
-                consultaAula(prop[0]);
-                break;
-            case "ConsultaDisponibilidad":
-                consultaDisponibilidad(prop[0]);
-                break;
-    }
-}
        
     imprimirTokio();
-    consultaAula(1);
-    consultaDisponibilidad(1);
 }
 
 function imprimirTokio() {
@@ -211,14 +196,20 @@ function declaraAula ( id , nombre , capacidad ){
     }
 }
 function declaraRecurso ( id , serie , nombre ){
-    let exist=false;
+    let existId=false;
+    let existSr=false;
     for(let a of Recurso){
         if(a.id==id){
-            exist=true;
+            existId=true;
+        }
+        if(a.serie == serie){
+            existSr=true;
         }
     }
-    if(exist){
+    if(existId){
         $('#outPut').val($('#outPut').val()+"\n"+"Error ya existe el id del recurso.");
+    }else if(existSr){
+        $('#outPut').val($('#outPut').val()+"\n"+"Error ya existe la serie del recurso.");
     }else {
         Recurso.push({id:id,serie:serie,nombre:nombre,disponible:disponible});
         $('#outPut').val($('#outPut').val()+"\n"+"Se guardo correctamente el recurso.");
