@@ -3,6 +3,7 @@
     var linea = "";
     var columna = 0;
     var tipo = 0;
+    var con = 1;
 
 function validarGramatica(){
     var exp = editor.getValue();
@@ -666,28 +667,28 @@ case 1:
                     produccion=2;
                     break;
                     }else {
-                    return false;
+            return false;
                     }
                 case 2:
                     if(validarID(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
                     produccion=3;
                     break;
                     }else {
-                    return false;
+        return false;
                     }
                 case 3:
                     if(validarComa(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
                     produccion=4;
                     break;
                     }else {
-                    return false;
+             return false;
                     } 
                  case 4:
                     if(validarID(txtGramatica,txtErrores,tokenArea,token[con],nLin)){
                     produccion=5;
                     break;
                     }else {
-                    return false;
+      return false;
                     }
                  
                   case 5:
@@ -695,7 +696,7 @@ case 1:
                     produccion=6;
                     break;
                     }else {
-                    return false;
+              return false;
                     }
                   
                    case 6:
@@ -703,7 +704,7 @@ case 1:
                     produccion=7;
                     break;
                     }else {
-                    return false;
+                 return false;
                     }
                   
                   
@@ -712,7 +713,7 @@ case 1:
                     produccion=8;
                     break;
                     }else {
-                    return false;
+                   return false;
                     }
                   
                    case 8:
@@ -1001,7 +1002,16 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             return true;
             
         }
+        if(evalER("^[\\,|\\)]$",token)){
+        $('#outPut').val($('#outPut').val()+"\nError sintáctico: Falta un parametro de tipo ID en la línea "+nLin+" columna "+columna);
+        con++;
+        return false;
+    }
+
+
         $('#outPut').val($('#outPut').val()+"\nError sintáctico: Se esperaba un ID en la línea "+nLin+" columna "+columna);
+        con++;
+        columna++;
         return false;
     }
     
@@ -1057,7 +1067,13 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>número</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
             columna = columna + token.length;
             return true;
-        }    
+        }   
+        if(evalER("^[\\,|\\)]$",token)){
+        $('#outPut').val($('#outPut').val()+"\nError sintáctico: Falta un parametro de tipo cantidad en la línea "+nLin+" columna "+columna);
+        con++;
+        columna++;
+        return false;
+       } 
         if(evalER("^[a-zA-Zñó]+$",token)){
                $('#outPut').val($('#outPut').val()+"\nError semántico: Se esperaba una cantidad en la línea "+nLin+" columna "+columna);
         return false;
@@ -1081,6 +1097,12 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             columna = columna + token.length;
             return true;
         }
+        if(evalER("^[\\,|\\)]$",token)){
+        $('#outPut').val($('#outPut').val()+"\nError sintáctico: Falta un parametro de tipo hora en la línea "+nLin+" columna "+columna);
+        con++;
+        columna++;
+        return false;
+    }
          if(evalER("^[A-Za-z0-9_]+$",token)){
                $('#outPut').val($('#outPut').val()+"\nError semántico: Se esperaba una hora en la línea "+nLin+" columna "+columna);
         return false;
@@ -1104,7 +1126,13 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>cadena</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
             columna = columna + token.length;
             return true;
-        }     
+        }
+        if(evalER("^[\\,|\\)]$",token)){
+        $('#outPut').val($('#outPut').val()+"\nError sintáctico: Falta un parametro de tipo cadena en la línea "+nLin+" columna "+columna);
+        con++;
+        columna++;
+        return false;
+    }     
          if(evalER("^[0-9]+$",token)){
                $('#outPut').val($('#outPut').val()+"\nError semántico: Se esperaba una cadena en la línea "+nLin+" columna "+columna);
         return false;
@@ -1127,6 +1155,13 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             $('#tablaS').append('<tr><td>'+cToken+'</td><td>'+token+'</td><td>día</td><td>'+nLin+'</td><td>'+columna+'</td></tr>')
             columna = columna + token.length;
             return true;
+          if(evalER("^[\\,|\\)]$",token)){
+        $('#outPut').val($('#outPut').val()+"\nError sintáctico: Falta un parametro de tipo día en la línea "+nLin+" columna "+columna);
+        con++;
+        columna++;
+        return false;
+    }  
+            
         }      
          if(evalER("^[A-Za-z0-9_]+$",token)){
         $('#outPut').val($('#outPut').val()+"\nError semántico: Se esperaba un día en la línea "+nLin+" columna "+columna);
@@ -1169,6 +1204,7 @@ function validarAlumno(token, txtGramatica, txtErrores,tokenArea, tam, nLin, lin
             return true;
         }        
         $('#outPut').val(errores+"\nError sintáctico: Se esperaba un ;  en la línea "+nLin+" columna "+columna);
+        columna++;
         return false;
     }
      
