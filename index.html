@@ -37,7 +37,7 @@
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <button class="btn btn-lg btn-block" aria-label="Left Align" id="help" onclick="$('#modalAyuda').show('modal')">
-                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Help</span>
+                    <span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Help</span>
 
                 </button>
             </div>
@@ -117,8 +117,8 @@ ConsultaMaestro();</pre>
                     </button>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'TablDatos')">
-                        Tab. Datos
+                    <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'Datos')">
+                        Datos
                     </button>
                 </div>
             </div>
@@ -142,23 +142,8 @@ ConsultaMaestro();</pre>
                 </table>                                                  
                 </div>
             </div>
-            <div id="TablDatos" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaDatosOut" cols="55"
-                                                         rows="16" readonly>
-                <table class="table divN" >
-                    <thead text-align="center">
-                    <tr>
-                        <th>Num</th>
-                        <th>Token</th>
-                        <th>Tipo</th>
-                        <th>Fila</th>
-                        <th>Columasdsana</th>
-                    </tr>
-                    </thead>
-                    <tbody id="tablaD" >
-
-                    </tbody>
-                </table>
-            </div>
+            <div id="Datos" class="tabcontentTokTab">
+                <textarea class="textArea" id="datostxt" cols="55" rows="16" readonly></textarea>
             </div>
         </div>
     </div>
@@ -238,9 +223,11 @@ ConsultaMaestro();</pre>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <img src="resources/automata.svg" height=400 width="800">
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <img src="resources/automata.svg" height=400 width="800">
+                    </div>
                     <textarea class="textArea" id="modalAutOut" cols="40"
-                              rows="10" readonly></textarea>
+                              rows="21" readonly></textarea>
                 </div>
             </div>
         </div>
