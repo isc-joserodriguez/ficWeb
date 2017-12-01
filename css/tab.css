@@ -46,12 +46,16 @@ div.tab button.active {
     height: 300px;
     overflow: scroll;
     }
+.divE{
+    resize: none;
+    height: 150px;
+    overflow: scroll;
+}
 #modalaut .modal-dialog  {width:90%;}
 #modalGra .modal-dialog  {width:90%;}
 #modalInfo .modal-dialog  {width:80%;}
 #codeArea1 {
      height: 325px;
-     width: 654px;
      position: relative;
      top: 0;
      right: 0;
@@ -60,7 +64,6 @@ div.tab button.active {
  }
 #codeArea2 {
     height: 325px;
-    width: 654px;
     position: relative;
     top: 0;
     right: 0;

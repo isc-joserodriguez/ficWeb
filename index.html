@@ -12,35 +12,34 @@
 <nav class="navbar">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-2">
-                <img src="resources/Logo.png" width="120px" height="50px">
-            </div>
-            <div class="col-md-2">
+            <div class="col-lg-2 col-md-2 hidden-sm hidden-xs"><img src="resources/Logo.png" width="120px" height="50px"></div>
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <button class="btn btn-lg btn-block" aria-label="Left Align" id="run" onclick="inicializar();">
-                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> Run
+                    <span class="glyphicon glyphicon-play" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Run</span>
                 </button>
             </div>
-            <div class="col-md-2">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                 <button class="btn btn-lg btn-block" aria-label="Left Align" id="compile" onclick="analizadores();">
-                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> Compile
+                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Compile</span>
 
                 </button>
             </div>
-            <div class="col-md-2">
-                <button class="btn btn-lg btn-block" aria-label="Left Align" id="save" onclick="guardarArchivo()"><span
-                        class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Save
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="">
+                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span>
+
                 </button>
             </div>
-            <div class="col-md-2">
-                <button class="btn btn-lg btn-block" aria-label="Left Align" id="upload" onclick="document.getElementById('filepicker').click();"><span
-                        class="glyphicon glyphicon-open" aria-hidden="true"></span> Upload
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="">
+                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs"></span>
+
                 </button>
-                <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo()">
             </div>
-            <div class="col-md-2">
-                <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
-                        onclick="$('#modalInfo').show('modal')"><span
-                        class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> Info
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="help" onclick="$('#modalAyuda').show('modal')">
+                    <span class="glyphicon glyphicon-indent-right" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Help</span>
+
                 </button>
             </div>
     
@@ -48,19 +47,15 @@
     </div>
 </nav>
 <div class="container">
-    <div class="row">
-        <p>&nbsp</p>
-        <p>&nbsp</p>
-    </div>
     <div class="row form-group">
-        <div class="col-md-7">
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
             <div class="tab">
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <button class="tablinksAsiCon btn-block" onclick="openAsiCon(event, 'Asig')" id="defaultAsi">
                         Asignaciones
                     </button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <button class="tablinksAsiCon btn-block" onclick="openAsiCon(event, 'Cons')">
                         Consultas
                     </button>
@@ -90,23 +85,47 @@ ConsultaAula(materia:IDMateria, hora: 12);
 ConsultaMaestro(hora:IDHora);
 ConsultaMaestro();</pre>
             </div>
+            <div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <button class="btn btn-lg btn-block" aria-label="Left Align" id="save" onclick="guardarArchivo()"><span
+                            class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Save</span>
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                    <button class="btn btn-lg btn-block" aria-label="Left Align" id="upload" onclick="document.getElementById('filepicker').click();"><span
+                            class="glyphicon glyphicon-open" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Upload</span>
+                    </button>
+                    <input type="file" id="filepicker" style="display:none" accept=".fic" onchange="abrirArchivo()">
+                </div>
+                <div class="col-lg-4 col-md-4 hidden-sm hidden-xs">
+                    <button class="btn btn-lg btn-block" aria-label="Left Align" id="info"
+                            onclick="$('#modalInfo').show('modal')"><span
+                            class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Info</span>
+                    </button>
+                </div>
+            </div>
         </div>
-        <div class="col-md-5">
+        <div class="col-lg-5 col-md-5 hidden-sm hidden-xs">
             <div class="tab">
-                <div class="col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'Toke')" id="defaultTok">
                         Tokens
                     </button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-lg-4 col-md-4">
                     <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'Tabl')">
-                        Tab. Simbolos
+                        Tab.Simbolos
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <button class="tablinksTokTab btn-block" onclick="openTokTab(event, 'TablDatos')">
+                        Tab. Datos
                     </button>
                 </div>
             </div>
-            <div id="Toke" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tokensOut" cols="62"
+            <div id="Toke" class="tabcontentTokTab"><textarea class="textArea" name="outPut" id="tokensOut" cols="55"
                                                               rows="16" readonly></textarea></div>
-            <div id="Tabl" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaSimbOut" cols="62"
+            <div id="Tabl" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaSimbOut" cols="55"
                                                               rows="16" readonly>
             <table class="table divN" >
                 <thead text-align="center"> 
@@ -124,32 +143,89 @@ ConsultaMaestro();</pre>
                 </table>                                                  
                 </div>
             </div>
+            <div id="TablDatos" class="tabcontentTokTab"><div class="divN" name="outPut" id="tablaDatosOut" cols="55"
+                                                         rows="16" readonly>
+                <table class="table divN" >
+                    <thead text-align="center">
+                    <tr>
+                        <th>Num</th>
+                        <th>Token</th>
+                        <th>Tipo</th>
+                        <th>Fila</th>
+                        <th>Columna</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tablaD" >
+
+                    </tbody>
+                </table>
+            </div>
+            </div>
         </div>
     </div>
 
     <div class="row form-group">
         <div class="col-sm-7">
-            <h4>Salida</h4>
-            <textarea class="textArea" name="outPut" id="outPut" cols="79" rows="8" readonly></textarea>
-        </div>
-        <div class="col-md-5">
             <div class="tab">
-                <div class="col-sm-6">
+                <div class="col-lg-4 col-md-4">
+                    <button class="tablinksOut btn-block" onclick="openOut(event, 'outPut')" id="defaultOut">
+                        Salida
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <button class="tablinksOut btn-block" onclick="openOut(event, 'TablError')">
+                        Errores
+                    </button>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <button class="tablinksOut btn-block" onclick="openOut(event, 'Consultas')">
+                        Consultas
+                    </button>
+                </div>
+            </div>
+
+            <textarea class="textArea tabcontentOut"  id="outPut" cols="79" rows="8" readonly></textarea>
+
+            <div id="TablError" class="tabcontentOut"><div class="divE" id="tablE" cols="55"
+                                                         rows="8" readonly>
+                <table class="table divN" >
+                    <thead text-align="center">
+                    <tr>
+                        <th>Num</th>
+                        <th>Token</th>
+                        <th>Tipo</th>
+                        <th>Fila</th>
+                        <th>Columna</th>
+                    </tr>
+                    </thead>
+                    <tbody id="tablaErrorBody" >
+
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
+            <textarea class="textArea tabcontentOut"  id="Consultas" cols="79" rows="8" readonly></textarea>
+
+        </div>
+        <div class="col-md-5 hidden-sm hidden-xs">
+            <div class="tab">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Auto')"
                             ondblclick=" $('#modalaut').show('modal');$('#modalAutOut').val($('#automataOut').val())" id="defaultAut">
                         Automata
                     </button>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                     <button class="tablinksAutGra btn-block" onclick="openAutGra(event, 'Gram')"
                             ondblclick="$('#modalGra').show('modal');$('#modalGraOut').val($('#gramaticaOut').val())">
                         Gramatica
                     </button>
                 </div>
             </div>
-            <div id="Auto" class="tabcontentAutGra"><textarea class="textArea" name="outPut" id="automataOut" cols="62"
+            <div id="Auto" class="tabcontentAutGra"><textarea class="textArea" name="outPut" id="automataOut" cols="55"
                                                               rows="8" readonly></textarea></div>
-            <div id="Gram" class="tabcontentAutGra"><textarea class="textArea" name="outPut" id="gramaticaOut" cols="62"
+            <div id="Gram" class="tabcontentAutGra"><textarea class="textArea" name="outPut" id="gramaticaOut" cols="55"
                                                               rows="8" readonly></textarea></div>
         </div>
     </div>
@@ -171,7 +247,7 @@ ConsultaMaestro();</pre>
         </div>
     </div>
 </div>
-<div id="modalGra" name="modalGra" class="modal">
+<div id="modalGra"  class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -188,7 +264,22 @@ ConsultaMaestro();</pre>
         </div>
     </div>
 </div>
-<div id="modalInfo" name="modalInfo" class="modal">
+<div id="modalAyuda" class="modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" onclick="$('#modalAyuda').hide('modal');" aria-hidden="true">&times;</button>
+                <h3>Help</h3>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modalInfo"  class="modal">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -199,7 +290,7 @@ ConsultaMaestro();</pre>
             <div class="modal-body">
                 <div class="row">
                     <div align="center"><h1>ITT</h1></div>
-                    <p> Compilador FIC creado por:
+                    <p> Compilador FIC creado por: </p>
                     <ul>
                     <li>
                         Samaniego Navarro David Eduardo
@@ -211,7 +302,7 @@ ConsultaMaestro();</pre>
                         Valencia Zavala Julio César
                     </li>
                     </ul>
-                    </p>
+
                     <p>
                         Docente: Ibarra Carlos Francisco
                     </p>
@@ -233,4 +324,3 @@ ConsultaMaestro();</pre>
 
 </body>
 </html>
-

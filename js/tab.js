@@ -27,6 +27,20 @@ function openTokTab(evt, editor) {
     evt.currentTarget.className += " active";
 }
 
+function openOut(evt, editor) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontentOut");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinksOut");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(editor).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+
 function openAutGra(evt, editor) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tabcontentAutGra");
@@ -41,16 +55,16 @@ function openAutGra(evt, editor) {
     evt.currentTarget.className += " active";
 }
 
-
 document.getElementById("defaultAsi").click();
 document.getElementById("defaultTok").click();
 document.getElementById("defaultAut").click();
+document.getElementById("defaultOut").click();
 //editor
 
 //areaCode1 Asignaciones
 
 var editor = ace.edit("codeArea1");
-editor.setTheme("ace/theme/twilight");
+//editor.setTheme("ace/theme/twilight");
 editor.session.setMode("ace/mode/javascript");
 editor.setFontSize(18);
 //areaCode2 Consultas
