@@ -99,12 +99,17 @@ function imprimirTokio() {
         "Materias: \t"+JSON.stringify(Materia)+"\n"+
         "Horas: \t"+JSON.stringify(Hora)
     )*/
-    console.log(
+    console.log("Grupos: \t"+JSON.stringify(Grupo)+"\n"+
+    "Aulas: \t"+JSON.stringify(Aula)+"\n"+
+    "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
+    "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
+    "Horas: \t"+JSON.stringify(Hora));
+    $("#datostxt").val(
         "Grupos: \t"+JSON.stringify(Grupo)+"\n"+
         "Aulas: \t"+JSON.stringify(Aula)+"\n"+
         "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
         "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
-        "Horas: \t"+JSON.stringify(Hora))
+        "Horas: \t"+JSON.stringify(Hora));
 
 }
 function declaraAlumno(id, nombre, carrera){
@@ -378,6 +383,7 @@ function asignarAula ( idAula , idGrupo ){
 }
 function asignarMaestro ( idMaestro , idGrupo ){
     maestro=buscarMaeID(idMaestro);
+    hora=obtenerHoraGrupo(idGrupo);
     if(maestro){
         grupo=buscarGrupoID(idGrupo);
         if(grupo){
@@ -459,6 +465,16 @@ function buscarEdID(idEdificio){
         }
     }
     return false;
+}
+
+function buscarMaeID(idMaestro){
+    for(indiceBusqueda=0;indiceBusqueda<Maestro.length;indiceBusqueda++){
+        if(Maestro[indiceBusqueda].id==idMaestro){
+            return Maestro[indiceBusqueda];
+        }
+    }
+    return false;
+
 }
 
 function buscarMatID(idMat){
