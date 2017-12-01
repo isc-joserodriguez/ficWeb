@@ -99,17 +99,64 @@ function imprimirTokio() {
         "Materias: \t"+JSON.stringify(Materia)+"\n"+
         "Horas: \t"+JSON.stringify(Hora)
     )*/
+    var cod="";
+    for(let a of Alumno){
+        cod+="db.alumno.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Edificio){
+        cod+="db.edificio.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Grupo){
+        cod+="db.grupo.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Maestro){
+        cod+="db.maestro.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Aula){
+        cod+="db.aula.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Recurso){
+        cod+="db.recurso.insert("+JSON.stringify(a)+")\n";
+    }
+    for(let a of Materia){
+        cod+="db.materia.insert("+JSON.stringify(a)+")\n";
+    }
+
+    var txtjson="";
+    for(let a of Alumno){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Edificio){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Grupo){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Maestro){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Aula){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Recurso){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    for(let a of Materia){
+        txtjson+=JSON.stringify(a)+"\n";
+    }
+    
     console.log("Grupos: \t"+JSON.stringify(Grupo)+"\n"+
     "Aulas: \t"+JSON.stringify(Aula)+"\n"+
     "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
     "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
     "Horas: \t"+JSON.stringify(Hora));
     $("#datostxt").val(
-        "Grupos: \t"+JSON.stringify(Grupo)+"\n"+
-        "Aulas: \t"+JSON.stringify(Aula)+"\n"+
-        "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
-        "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
-        "Horas: \t"+JSON.stringify(Hora));
+        "Grupos: \n"+JSON.stringify(Grupo)+"\n"+
+        "Aulas: \n"+JSON.stringify(Aula)+"\n"+
+        "Recursos: \n"+JSON.stringify(Recurso)+"\n"+
+        "Edificios: \n"+JSON.stringify(Edificio)+"\n"+
+        "Horas: \n"+JSON.stringify(Hora));
+    archivos(cod,txtjson)
 
 }
 function declaraAlumno(id, nombre, carrera){
