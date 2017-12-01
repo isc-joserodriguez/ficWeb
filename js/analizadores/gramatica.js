@@ -170,7 +170,10 @@ function validarGramaticas(token,txtGramatica,txtErrores, tokenArea,tam,  nLin, 
             }
     errores = $('#outPut').val();
 
-    $('#outPut').val(errores+"\nError sintáctico: Se esperaba un tipo de dato en la linea "+nLin+" columna "+columna);
+    $('#outPut').val($('#outPut').val()+"\nError léxico: No se reconoce el token en la linea "+nLin+" columna "+columna);
+    nErrores++;
+
+    $('#outPut').val($('#outPut').val()+"\nError sintáctico:Se esperaba un tipo de dato en la linea "+nLin+" columna "+columna);
     nErrores++;
     return false;
     }
