@@ -34,5 +34,5 @@ function abrirArchivo() {
 function guardarArchivo () {
     var codigoFuente=editor.getValue()+"|"+editor2.getValue();
     var blob = new Blob([codigoFuente], {type: "text/plain;charset=UTF-8"});
-    saveAs(blob, "prueba.fic");
+    saveAs(blob, "sourceCode.fic");
 }
