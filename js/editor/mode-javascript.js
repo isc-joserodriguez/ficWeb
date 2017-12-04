@@ -59,7 +59,7 @@ var identifierRe = "[a-zA-Z\\$_\u00a1-\uffff][a-zA-Z\\d\\$_\u00a1-\uffff]*";
 var JavaScriptHighlightRules = function(options) {
     var keywordMapper = this.createKeywordMapper({
         "variable.language":
-            "ConsultaAula|ConsultaMaestro|Edificio|Grupo|Maestro|Alumno|Aula|Recurso|Materia|Hora",
+            "ConsultaAlumno|ConsultaAula|ConsultaMaestro|Edificio|Grupo|Maestro|Alumno|Aula|Recurso|Materia|Hora",
         "keyword":
             "AsignarRecurso|AsignarEdificio|AsignarGrupo|AsignarAula|AsignarMaestro|AsignarHora|AsignarAlumno",
         "storage.type":

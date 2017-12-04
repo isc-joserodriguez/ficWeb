@@ -25,13 +25,13 @@
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <button class="btn btn-lg btn-block" aria-label="Left Align" id="consult">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="consulta" onclick="Consultar();">
                     <span class="glyphicon glyphicon-share-alt"></span> <span class="hidden-sm hidden-xs">Consulta</span>
 
                 </button>
             </div>
             <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-                <button class="btn btn-lg btn-block" aria-label="Left Align" id="genCod">
+                <button class="btn btn-lg btn-block" aria-label="Left Align" id="genCod" onclick="gen();">
                     <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span> <span class="hidden-sm hidden-xs">Gen. Cod.</span> 
                 </button>
             </div>
@@ -62,6 +62,7 @@
             </div>
             <div id="Asig" class="tabcontentAsiCon">
                 <pre id="codeArea1">
+Alumno ( 1 , Juan , isc );
 Recurso ( 1 , asd , Proyector );
 Recurso ( 2 , qwe , Proyector );
 Recurso ( 3 , gdf , Proyector );
@@ -74,15 +75,19 @@ AsignarGrupo ( 2 , 1 );
 AsignarRecurso ( Proyector , 1 );
 AsignarRecurso ( 1 , 1 );
 Edificio ( 1 , UVP );
-AsignarEdificio ( 1 , 1 );</pre>
+AsignarEdificio ( 1 , 1 );
+Maestro ( 1 , FIC , 09 , 12 , 14 , 18 );</pre>
             </div>
             <div id="Cons" class="tabcontentAsiCon">
                 <pre id="codeArea2">
-ConsultaAula(materia:IDMateria);
-ConsultaAula(materia:IDMateria, hora: 12);
+ConsultaAula ( );
+ConsultaAula ( 12 );
 
-ConsultaMaestro(hora:IDHora);
-ConsultaMaestro();</pre>
+ConsultaMaestro ( );
+ConsultaMaestro ( 1 );
+
+ConsultaAlumno ( );
+ConsultaAlumno ( 1 );</pre>
             </div>
             <div>
                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
@@ -352,6 +357,7 @@ AsignarMaestro ( 2, 1 );
 <script src="js/manejador.js"></script>
 <script src="js/mongo/generadorMongo.js"></script>
 <script src="js/Asignaciones.js"></script>
+<script src="js/Consultas.js"></script>
 
 </body>
 </html>

@@ -7,7 +7,7 @@ var Aula=[];
 var Recurso=[];
 var Materia=[];
 var Hora=[];
-var disponible=["7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"]
+var disponible=["7","8","9","10","11","12","13","14","15","16","17","18","19","20","21"];
 
 function inicializar(){
     $('#outPut').val("");
@@ -99,6 +99,31 @@ function imprimirTokio() {
         "Materias: \t"+JSON.stringify(Materia)+"\n"+
         "Horas: \t"+JSON.stringify(Hora)
     )*/
+    
+    
+    console.log("Grupos: \t"+JSON.stringify(Grupo)+"\n"+
+    "Aulas: \t"+JSON.stringify(Aula)+"\n"+
+    "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
+    "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
+    "Horas: \t"+JSON.stringify(Hora));
+
+
+    $("#datostxt").val(
+        "Grupos: \n"+JSON.stringify(Grupo)+"\n"+
+        "\n"+"Aulas: \n"+JSON.stringify(Aula)+"\n"+
+        "\n"+"Recursos: \n"+JSON.stringify(Recurso)+"\n"+
+        "\n"+"Edificios: \n"+JSON.stringify(Edificio)+"\n"+
+        "\n"+"Horas: \n"+JSON.stringify(Hora)+"\n"+
+        "\n"+"Maestros: \n"+JSON.stringify(Maestro)+"\n"+
+        "\n"+"Alumnos:\n"+JSON.stringify(Alumno)+"\n"+
+        "\n"+"Materias:\n"+JSON.stringify(Materia)
+
+    );
+    
+
+
+}
+function gen(){
     var cod="";
     for(let a of Alumno){
         cod+="db.alumno.insert("+JSON.stringify(a)+")\n";
@@ -144,20 +169,8 @@ function imprimirTokio() {
     for(let a of Materia){
         txtjson+=JSON.stringify(a)+"\n";
     }
-    
-    console.log("Grupos: \t"+JSON.stringify(Grupo)+"\n"+
-    "Aulas: \t"+JSON.stringify(Aula)+"\n"+
-    "Recursos: \t"+JSON.stringify(Recurso)+"\n"+
-    "Edificios: \t"+JSON.stringify(Edificio)+"\n"+
-    "Horas: \t"+JSON.stringify(Hora));
-    $("#datostxt").val(
-        "Grupos: \n"+JSON.stringify(Grupo)+"\n"+
-        "Aulas: \n"+JSON.stringify(Aula)+"\n"+
-        "Recursos: \n"+JSON.stringify(Recurso)+"\n"+
-        "Edificios: \n"+JSON.stringify(Edificio)+"\n"+
-        "Horas: \n"+JSON.stringify(Hora));
-    archivos(cod,txtjson)
 
+    archivos(cod,txtjson)
 }
 function declaraAlumno(id, nombre, carrera){
     let exist=false;
@@ -206,7 +219,7 @@ function declaraGrupo ( id , nombre , capacidad , carrera ){
         $('#outPut').val($('#outPut').val()+"\n"+"Se guardo correctamente el grupo");
     }
 }
-function declaraMaestro ( id , nombre , E1 , S1 , E2 , S2 ){
+function declaraMaestro ( id , nombre , En1 , Sa1 , En2 , Sa2 ){
     let exist=false;
     for(let a of Maestro){
         if(a.id==id){
@@ -217,10 +230,15 @@ function declaraMaestro ( id , nombre , E1 , S1 , E2 , S2 ){
         $('#outPut').val($('#outPut').val()+"\n"+"Error ya existe el id de maestro.");
     }else {
         var temp=[];
-        for(var i=S1;i<=E1;i--){
+        S1=parseInt(Sa1);
+        S2=parseInt(Sa2);
+        E1=parseInt(En1);
+        E2=parseInt(En2)
+        console.log(E1+"\n"+S1+"\n"+E2+"\n"+S2);
+        for(var i=E1;i<=S1;i++){
             temp.push(i);
         }
-        for(var i=S2;i<=E2;i--){
+        for(var i=E2;i<=S2;i++){
             temp.push(i);
         }
         temp=temp.sort();
@@ -379,9 +397,6 @@ function asignarRecurso ( Rec, aulGrup ){
     }
 }
 
-
-
-
 function asignarGrupo ( idGrupo , idMateria ){
     grupo=buscarGrupoID(idGrupo);
     if(grupo){
@@ -413,7 +428,6 @@ function asignarEdificio ( idEdificio , idAula ){
     }else{
         $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra aula con id= "+idAula+".");
     }
-
 }
 function asignarAula ( idAula , idGrupo ){
     aula=buscarAulaID(idAula);
@@ -428,6 +442,16 @@ function asignarAula ( idAula , idGrupo ){
         $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra aula con id= "+idAula+".");
     }
 }
+function buscarEnArray(array,elemento){
+    var bool=false;
+    for(let a of array){
+        if(a==elemento){
+            bool=true;
+        }
+    }
+    return bool;
+}
+
 function asignarMaestro ( idMaestro , idGrupo ){
     maestro=buscarMaeID(idMaestro);
     hora=obtenerHoraGrupo(idGrupo);
@@ -438,10 +462,14 @@ function asignarMaestro ( idMaestro , idGrupo ){
         }else{
             $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra grupo con id= "+idGrupo+".");
         }
+        /*if(buscarEnArray(maestro.disponible,hora)){
+            
+        }else{
+            $('#outPut').val($('#outPut').val()+"\n"+"El maestro no tiene disponible a las "+hora+".");
+        }*/
     }else{
         $('#outPut').val($('#outPut').val()+"\n"+"No se encuentra maestro con id= "+idMaestro+".");
     }
-
 }
 
 function asignarAlumno ( idAlumno , idGrupo ){
@@ -524,6 +552,13 @@ function buscarMaeID(idMaestro){
 
 }
 
+
+function obtenerHoraGrupo(idGrupo){
+    grupo=buscarGrupoID(idGrupo);
+    return grupo.hora;
+    
+}
+
 function buscarMatID(idMat){
     for(indiceBusqueda=0;indiceBusqueda<Materia.length;indiceBusqueda++){
         if(Materia[indiceBusqueda].id==idMat){
@@ -595,8 +630,6 @@ function cosultaDisponibilidad(idGrupo){
         }
          $('#outPut').val($('#outPut').val()+"\n"+"no se encontró el grupo");
     }
-    
-
 }
 
 
